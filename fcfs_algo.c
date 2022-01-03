@@ -1,3 +1,5 @@
+// For arrival time = 0 
+
 #include <stdio.h>
 int num_process, processes[10], waiting_times[10], arrival_times[10], completion_times[10], burst_times[10], turnAround_times[10];
 
