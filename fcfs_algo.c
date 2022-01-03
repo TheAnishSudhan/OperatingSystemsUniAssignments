@@ -49,17 +49,6 @@ void main(){
     turnAround_times[i]=turnAround_time(i);
   }
 
-  // for (int i = 0; i < num_process; i++) {
-  //   printf("%d\n", waiting_times[i]);
-  //   printf("%d\n", completion_times[i]);
-  //   printf("%d\n", turnAround_times[i]);
-  // }
-
   avgTime();
-
-//average waiting time and waiting time
-//completion time
-//turn around time = completion time - arrival time
-// arrival time
 
 }
