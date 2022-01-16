@@ -75,6 +75,37 @@ int main(){
 //   }
 // }
 
+
+for (int j = 0; j < num_process; j++) {
+  for (int i = j; i < num_process; i++) {
+    if (arrival_times[i]<arrival_times[j]) {
+      temp=arrival_times[i];
+      arrival_times[i]=arrival_times[j];
+      arrival_times[j]=temp;
+
+      temp2=burst_times[i];
+      burst_times[i]=burst_times[j];
+      burst_times[j]=temp2;
+    }
+    if ((arrival_times[i]==arrival_times[j])&&priority[i]<priority[j]) {
+      temp=arrival_times[i];
+      arrival_times[i]=arrival_times[j];
+      arrival_times[j]=temp;
+
+      temp2=burst_times[i];
+      burst_times[i]=burst_times[j];
+      burst_times[j]=temp2;
+
+      temp2=priority[i];
+      priority[i]=priority[j];
+      priority[j]=temp2;
+    }
+  }
+}
+
+//print the process getting executed-> maybe ccreate a process_id[] array
+//create a new set of arrays for burst time etc and then use them for computing averages
+
 printf("Works 1\n");
 for (int j = 0; j < num_process; j++) {
   for (int i = j; i < num_process; i++) {
