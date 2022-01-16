@@ -51,20 +51,36 @@ int main(){
 
   }
 
+// for (int j = 0; j < num_process; j++) {
+//   for (int i = j; i < num_process; i++) {
+//     if (arrival_times[i]<arrival_times[j]) {
+//       temp=arrival_times[i];
+//       arrival_times[i]=arrival_times[j];
+//       arrival_times[j]=temp;
+//
+//       temp2=burst_times[i];
+//       burst_times[i]=burst_times[j];
+//       burst_times[j]=temp2;
+//     }
+//     if ((arrival_times[i]==arrival_times[j])&&priority[i]<priority[j]&&i<j) {
+//       printf("Change happening\n" );
+//       temp=arrival_times[i];
+//       arrival_times[i]=arrival_times[j];
+//       arrival_times[j]=temp;
+//
+//       temp2=burst_times[i];
+//       burst_times[i]=burst_times[j];
+//       burst_times[j]=temp2;
+//     }
+//   }
+// }
+
+printf("Works 1\n");
 for (int j = 0; j < num_process; j++) {
   for (int i = j; i < num_process; i++) {
-    if (arrival_times[i]<arrival_times[j]) {
-      temp=arrival_times[i];
-      arrival_times[i]=arrival_times[j];
-      arrival_times[j]=temp;
-
-      temp2=burst_times[i];
-      burst_times[i]=burst_times[j];
-      burst_times[j]=temp2;
-    }
-    if ((arrival_times[i]==arrival_times[j])&&priority[i]<priority[j]) {
+    printf("i: %d, j: %d\n", priority[i], priority[j]);
+    if (priority[i]<priority[j]) {
       printf("Change happening\n" );
-      printf("i:%d, j:%d\n",priority[i],priority[j]);
       temp=arrival_times[i];
       arrival_times[i]=arrival_times[j];
       arrival_times[j]=temp;
@@ -72,13 +88,27 @@ for (int j = 0; j < num_process; j++) {
       temp2=burst_times[i];
       burst_times[i]=burst_times[j];
       burst_times[j]=temp2;
-
-      temp2=priority[i];
-      priority[i]=priority[j];
-      priority[j]=temp2;
     }
   }
 }
+
+printf("Works 2\n");
+
+for (int j = 0; j < num_process; j++) {
+  for (int i = j; i < num_process; i++) {
+    if ((arrival_times[i]<arrival_times[j])&&priority[i]==priority[j]) {
+      printf("Change happening\n" );
+      temp=arrival_times[i];
+      arrival_times[i]=arrival_times[j];
+      arrival_times[j]=temp;
+
+      temp2=burst_times[i];
+      burst_times[i]=burst_times[j];
+      burst_times[j]=temp2;
+    }
+  }
+}
+
 
   for (int i = 0; i < num_process; i++) {
 
@@ -104,9 +134,6 @@ for (int j = 0; j < num_process; j++) {
 
     printf("Arrival times for process %d: ",i+1 );
     printf("%d\n", arrival_times[i] );
-
-    printf("Priority for process %d: ",i+1 );
-    printf("%d\n", priority[i] );
 
   }
 
