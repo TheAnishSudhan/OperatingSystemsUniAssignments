@@ -69,6 +69,20 @@ int main(){
 
   }
 
+  for (int j = 0; j < num_process; j++) {
+    for (int i = j; i < num_process; i++) {
+      if (arrival_times[i]<arrival_times[j]) {
+        temp=arrival_times[i];
+        arrival_times[i]=arrival_times[j];
+        arrival_times[j]=temp;
+
+        temp2=burst_times[i];
+        burst_times[i]=burst_times[j];
+        burst_times[j]=temp2;
+      }
+    }
+  }
+
 //iterator calc
 
 int iterator=0, temp_iterator=0;
