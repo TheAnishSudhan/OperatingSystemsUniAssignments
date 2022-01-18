@@ -1,8 +1,8 @@
 #include <stdio.h>
 int num_process, processes[10], exit_times[10], arrival_times[10], waiting_times[10];
 int burst_times[10], turnAround_times[10], priority[10];
-int temp, temp2;
-//priority
+int temp, temp2, process_id[10];
+//non preemptive priority
 
 int exitTime(int i){
   if ((i==0) || (arrival_times[i]>exit_times[i-1]))
@@ -46,8 +46,10 @@ int main(){
     printf("Enter the arrival time for process %d: ",i+1 );
     scanf("%d", &arrival_times[i] );
 
-    printf("Enter priority for process %d \n(Enter 1 in case of no same arrival time) ",i+1 );
+    printf("Enter priority for process %d: ",i+1 );
     scanf("%d", &priority[i] );
+
+    process_id[i]=i+1;
 
   }
 
@@ -61,6 +63,14 @@ for (int j = 0; j < num_process; j++) {
       temp2=burst_times[i];
       burst_times[i]=burst_times[j];
       burst_times[j]=temp2;
+
+      temp2=priority[i];
+      priority[i]=priority[j];
+      priority[j]=temp2;
+
+      temp2=process_id[i];
+      process_id[i]=process_id[j];
+      process_id[j]=temp2;
     }
     if ((arrival_times[i]==arrival_times[j])&&priority[i]<priority[j]) {
       temp=arrival_times[i];
@@ -74,6 +84,27 @@ for (int j = 0; j < num_process; j++) {
       temp2=priority[i];
       priority[i]=priority[j];
       priority[j]=temp2;
+
+      temp2=process_id[i];
+      process_id[i]=process_id[j];
+      process_id[j]=temp2;
+    }
+    if ((arrival_times[i]==arrival_times[j])&&(priority[i]==priority[j])&&(process_id[i]<process_id[j])) {
+      temp=arrival_times[i];
+      arrival_times[i]=arrival_times[j];
+      arrival_times[j]=temp;
+
+      temp2=burst_times[i];
+      burst_times[i]=burst_times[j];
+      burst_times[j]=temp2;
+
+      temp2=priority[i];
+      priority[i]=priority[j];
+      priority[j]=temp2;
+
+      temp2=process_id[i];
+      process_id[i]=process_id[j];
+      process_id[j]=temp2;
     }
   }
 }
@@ -86,27 +117,28 @@ for (int j = 0; j < num_process; j++) {
 
     waiting_times[i]=waitingTime(i);
   }
-  //
-  // for (int i = 0; i < num_process; i++) {
-  //   printf("Exit Times: " );
-  //   printf("%d\n", exit_times[i]);
-  //
-  //   printf("Turn Around Times: " );
-  //   printf("%d\n", turnAround_times[i]);
-  //
-  //   printf("Waiting Times: " );
-  //   printf("%d\n", waiting_times[i]);
-  //
-  //   printf("Burst times for process %d: ",i+1 );
-  //   printf("%d\n", burst_times[i] );
-  //
-  //   printf("Arrival times for process %d: ",i+1 );
-  //   printf("%d\n", arrival_times[i] );
-  //
-  //   printf("Priority for process %d: ",i+1 );
-  //   printf("%d\n", priority[i] );
-  //
-  // }
+
+  for (int i = 0; i < num_process; i++) {
+
+    printf("\nPROCESS RUNNING: %d\n",process_id[i] );
+
+    printf("Exit Time: %d\n", exit_times[i]);
+
+    printf("Burst time: %d\n",burst_times[i]);
+
+    printf("Arrival time: %d\n",arrival_times[i]);
+
+  }
+
+    for (int i = 0; i < num_process; i++) {
+
+      printf("\nProcess %d\n",i+1);
+
+      printf("Turn Around Time: %d\n", turnAround_times[i]);
+
+      printf("Waiting Time: %d\n",waiting_times[i]);
+
+    }
 
   avgTime();
 
