@@ -26,7 +26,7 @@ void avgTime(){
     totalTurnAroundTime+=turnAround_times[i];
   }
   printf("\n\nTOTAL WT TIME: %d\n", totalWaitingTime);
-  printf("TOTOAL TA TIME: %d\n", totalTurnAroundTime );
+  printf("TOTAL TA TIME: %d\n", totalTurnAroundTime );
   float avgWaitingTime= (float)totalWaitingTime/(float)num_process;
   float avgTurnAroundTime=(float)totalTurnAroundTime/(float)num_process;
 
@@ -60,7 +60,6 @@ int main(){
     scanf("%d", &burst_times[i] );
 
     og_burst_times[i]=burst_times[i];
-    temp_burst_times[i]=burst_times[i];
 
     printf("Enter the arrival time for process %d: ",i+1 );
     scanf("%d", &arrival_times[i] );
@@ -81,6 +80,10 @@ int main(){
         burst_times[j]=temp2;
       }
     }
+  }
+
+  for (int i = 0; i < num_process; i++) {
+    temp_burst_times[i]=burst_times[i];
   }
 
 //iterator calc
