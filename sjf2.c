@@ -47,9 +47,25 @@ int main(){
 
   }
 
+  for (int j = 0; j < num_process; j++) {
+    for (int i = j; i < num_process; i++) {
+      if (arrival_times[i]<arrival_times[j]) {
+        temp=arrival_times[i];
+        arrival_times[i]=arrival_times[j];
+        arrival_times[j]=temp;
+
+        temp2=burst_times[i];
+        burst_times[i]=burst_times[j];
+        burst_times[j]=temp2;
+      }
+    }
+  }
+
+  //make logic for sjf where arrival time is accounted for
+
 for (int j = 0; j < num_process; j++) {
   for (int i = j; i < num_process; i++) {
-    if (burst_times[i]<burst_times[j]) {
+    if ((exit_times[j]<arrival_times[i])&&(burst_times[i]<burst_times[j])) { //messed up logic
       temp=arrival_times[i];
       arrival_times[i]=arrival_times[j];
       arrival_times[j]=temp;
