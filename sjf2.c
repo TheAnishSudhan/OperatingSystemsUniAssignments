@@ -80,6 +80,7 @@ for (int j = 0; j < num_process; j++) {
   for (int i = 0; i < num_process; i++) {
 
     exit_times[i]=exitTime(i);
+    printf("Exit times: %d\n", exit_times[i] );
 
     turnAround_times[i]=turnAroundTime(i);
 

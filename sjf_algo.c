@@ -68,8 +68,9 @@ for (int j = 0; j < num_process; j++) {
     turnAround_times[i]=turnAroundTime(i);
 
     waiting_times[i]=waitingTime(i);
-    printf("Waiting times %d\n",waitingTime(i) );
-      printf("TA times %d\n",turnAroundTime(i) );
+    printf("Exit times: %d\n", exit_times[i] );
+    printf("Waiting times %d\n",waiting_times[i] );
+      printf("TA times %d\n",turnAround_times[i] );
   }
 
   avgTime();
